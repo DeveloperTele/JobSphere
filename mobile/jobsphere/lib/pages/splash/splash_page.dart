@@ -16,11 +16,12 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+
     startTimer();
   }
 
   startTimer() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
     Get.offAll(const IntroPage());
   }
 
@@ -37,17 +38,18 @@ class _SplashPageState extends State<SplashPage> {
                 flex: 2,
                 child: Center(
                   child: Image.asset('assets/images/playstore.png',
-                    width: 100,
-                    height: 100,
+                    width: 180,
+                    height: 180,
                   ),
                 )
             ),
             Expanded(child: Center(
               child: Shimmer.fromColors(
                 baseColor: Colors.white,
+
                 highlightColor: homeBackground.withOpacity(0.45),
                 child: const Text(
-                  'Job Sphere',
+                  'JOB SPHERE',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 40.0,

@@ -43,7 +43,7 @@ class ConfirmButton extends StatelessWidget {
               tileMode: TileMode.clamp)),
       child: MaterialButton(
         highlightColor: Colors.transparent,
-        splashColor: splashBackground,
+        splashColor: darkBackground,
         onPressed: onPressed,
         child: Padding(
           padding: const EdgeInsets.symmetric(

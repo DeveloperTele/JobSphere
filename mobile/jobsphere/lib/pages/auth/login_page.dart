@@ -9,6 +9,7 @@ import 'package:jobsphere/pages/auth/widgets/email_input.dart';
 import 'package:jobsphere/pages/auth/widgets/password_input.dart';
 import 'package:jobsphere/pages/auth/widgets/social_login_widgets.dart';
 import 'package:jobsphere/pages/home/home_page.dart';
+import 'package:jobsphere/pages/widgets/loading/loading_dialog.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -28,12 +29,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: splashBackground,
+        backgroundColor: darkBackground,
         body: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              const SizedBox(height: 90),
               Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
@@ -85,7 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           ConfirmButton(
                             text: 'Login',
-                            onPressed: () => Get.offAll(const HomePage())
+                            onPressed: () {
+                              Get.dialog(const LoadingDialog());
+                              Future.delayed(const Duration(seconds: 3), () => Get.offAll(const HomePage()));
+                            }
                           ),
                           TextButton(
                             child: const Text(

@@ -8,6 +8,7 @@ import 'package:jobsphere/pages/auth/widgets/name_input.dart';
 import 'package:jobsphere/pages/auth/widgets/password_input.dart';
 import 'package:jobsphere/pages/auth/widgets/social_login_widgets.dart';
 import 'package:jobsphere/pages/home/home_page.dart';
+import 'package:jobsphere/pages/widgets/loading/loading_dialog.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -31,11 +32,12 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: splashBackground,
+        backgroundColor: darkBackground,
         body: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 30.0),
           child: Column(
             children: <Widget>[
+              const SizedBox(height: 90),
               Stack(
                 alignment: Alignment.topCenter,
                 children: <Widget>[
@@ -88,7 +90,10 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                           ConfirmButton(
                               text: 'Register',
-                              onPressed: () => Get.offAll(const HomePage())
+                              onPressed: () {
+                                Get.dialog(const LoadingDialog());
+                                Future.delayed(const Duration(seconds: 3), () => Get.offAll(const HomePage()));
+                              }
                           ),
                         ],
                       ),

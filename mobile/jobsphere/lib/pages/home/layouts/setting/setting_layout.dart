@@ -12,7 +12,7 @@ class SettingLayout extends GetView<LayoutController> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: controller.toggleLeft,
-            splashColor: splashBackground,
+            splashColor: darkBackground,
             icon: const Icon(Icons.menu, color: Colors.white,)
         ),
         title: const Text('Setting', style: TextStyle(
