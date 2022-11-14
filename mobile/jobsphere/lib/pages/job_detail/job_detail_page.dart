@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:jobsphere/background/constants/color_constant.dart';
 import 'package:jobsphere/background/constants/style_constants.dart';
 import 'package:jobsphere/background/models/jobs_model.dart';
+import 'package:jobsphere/pages/job_detail/widgets/jd_description.dart';
 import 'package:jobsphere/pages/job_detail/widgets/jd_tab_menu.dart';
+import 'package:jobsphere/pages/job_detail/widgets/jd_title_info.dart';
 import 'package:jobsphere/pages/widgets/loading/loading_dialog.dart';
 
 class JobDetailPage extends StatefulWidget {
@@ -34,8 +36,9 @@ class _JobDetailPageState extends State<JobDetailPage> {
     Future.delayed(const Duration(seconds: 2), (){
       setState(() {
         views = [
-          const SizedBox(height: 200),
-          const JdTabMenu(),
+          JdTitleInfo(job: widget.job!),
+          JdTabMenu(url: widget.job!.refs!.landingPage),
+          JdDescription(text: widget.job!.contents!)
         ];
       });
       Get.back();
@@ -47,54 +50,64 @@ class _JobDetailPageState extends State<JobDetailPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: darkBackground,
-        title: const Text('Job description', style: TextStyle(
+        title: const Text('Job detail', style: TextStyle(
           color: Colors.white
         ),),
       ),
-      bottomNavigationBar: Row(
-        children: [
-          GestureDetector(
-            onTap: () => setState(() {
-              fav = !fav;
-            }),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: Icon(Icons.bookmark,
-                  color: fav ? Colors.purple : Colors.grey,
+      bottomNavigationBar: SizedBox(
+        height: 50,
+        child: Row(
+          children: [
+            GestureDetector(
+              onTap: () => setState(() {
+                fav = !fav;
+              }),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                color: darkBackground,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Icon(Icons.bookmark,
+                      color: fav ? Colors.purple : Colors.grey,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(child: GestureDetector(
-            onTap: () {
-              Get.dialog(const LoadingDialog());
-              Future.delayed(const Duration(seconds: 3), (){
-                Get.back();
-                Get.snackbar(
-                  'Successful',
-                  'Your job application is send successfully',
-                  snackPosition: SnackPosition.BOTTOM
-                );
-              });
-            },
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+            Expanded(child: GestureDetector(
+              onTap: () {
+                Get.dialog(const LoadingDialog());
+                Future.delayed(const Duration(seconds: 3), (){
+                  Get.back();
+                  Get.snackbar(
+                    'Successful',
+                    'Your job application is send successfully',
+                    snackPosition: SnackPosition.BOTTOM
+                  );
+                });
+              },
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                color: Colors.purple,
+                child: const Center(
+                  child: Text('APPLY', style: dashboardListTitle),
+                ),
               ),
-              color: Colors.purple,
-              child: const Center(
-                child: Text('APPLY', style: dashboardListTitle),
-              ),
-            ),
-          ))
-        ],
+            ))
+          ],
+        ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: views,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: views,
+          ),
         ),
       ),
     );

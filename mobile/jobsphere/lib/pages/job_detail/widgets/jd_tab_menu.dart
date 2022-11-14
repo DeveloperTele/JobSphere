@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:jobsphere/pages/company/company_page.dart';
+import 'package:jobsphere/pages/job_detail/widgets/jd_webpage.dart';
 
 class JdTabMenu extends StatelessWidget {
-  const JdTabMenu({Key? key}) : super(key: key);
+
+  final String? url;
+
+  const JdTabMenu({Key? key, required this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +24,27 @@ class JdTabMenu extends StatelessWidget {
             Expanded(child: Center(
               child: TextButton(
                   onPressed: () {},
-                  child: Text('Job Description')
+                  child: const Text('Description', style: TextStyle(
+                    color: Colors.yellowAccent
+                  ))
               ),
             )),
-            VerticalDivider(width: 1),
+            const VerticalDivider(width: 1),
             Expanded(child: Center(
               child: TextButton(
-                  onPressed: () {},
-                  child: Text('Company')
+                  onPressed: () => Get.to(const CompanyPage()),
+                  child: const Text('Company', style: TextStyle(
+                      color: Colors.white
+                  ))
               ),
             )),
-            VerticalDivider(width: 1),
+            const VerticalDivider(width: 1),
             Expanded(child: Center(
               child: TextButton(
-                onPressed: () {},
-                child: Text('Web Page')
+                onPressed: () => Get.to(JdWebpage(url: url!)),
+                child: const Text('Web Page', style: TextStyle(
+                    color: Colors.white
+                ))
               ),
             )),
           ],

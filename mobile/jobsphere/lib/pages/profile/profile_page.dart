@@ -13,6 +13,17 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: homeBackground,
+      appBar: AppBar(
+        backgroundColor: darkBackground,
+        title: Text('Htun Aung Linn'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+
+          ],
+        ),
+      ),
     );
   }
 }

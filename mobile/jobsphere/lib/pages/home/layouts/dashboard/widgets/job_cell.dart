@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsphere/background/models/jobs_model.dart';
 import 'package:jobsphere/background/constants/style_constants.dart';
-import 'package:jobsphere/pages/company/company_page.dart';
 import 'package:jobsphere/pages/job_detail/job_detail_page.dart';
 import 'package:jobsphere/pages/widgets/round_background_text/round_background_text.dart';
 
@@ -18,8 +17,7 @@ class JobCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      //onTap: () => Get.to(JobDetailPage(job: job)),
-      onTap: () => Get.to(const CompanyPage()),
+      onTap: () => Get.to(JobDetailPage(job: job)),
       child: Card(
         margin: const EdgeInsets.only(
           left: 16,
