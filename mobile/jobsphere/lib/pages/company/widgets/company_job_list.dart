@@ -10,7 +10,7 @@ class CompanyJobList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<LayoutController>(builder: (controller) => SliverList(
         delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-          return JobCell(job: controller.dashboardSearchResults!.last);
+          return JobCell(job: controller.dashboardSearchResults![index]);
         },
           childCount: controller.dashboardSearchResults!.length > 5 ? 5 : controller.dashboardSearchResults!.length,)
     ));

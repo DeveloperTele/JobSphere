@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
 import 'package:jobsphere/background/models/jobs_model.dart';
 import 'package:jobsphere/background/service/api.dart';
 import 'package:jobsphere/background/service/classifier.dart';
 import 'package:loadany/loadany.dart';
-import 'package:lottie/lottie.dart';
 
 class LayoutController extends GetxController {
+  Classifier classifier = Classifier();
   AdvancedDrawerController advancedDrawerController = AdvancedDrawerController();
   LoadStatus dashboardListStatus = LoadStatus.normal;
   int currentLayout = 0;
@@ -15,12 +14,6 @@ class LayoutController extends GetxController {
   List<Results>? dashboardSearchResults = [];
   String mlPredict = 'Software Engineering';
   int bookmarkCount = 3;
-
-  @override
-  void onInit() {
-    super.onInit();
-    predictJob();
-  }
 
   toggleLeft(){
     advancedDrawerController.toggleDrawer();
@@ -41,8 +34,8 @@ class LayoutController extends GetxController {
   }
 
   predictJob() async {
-    // List<double> result = Classifier().classify('This user has experience in 10 years of programing background.');
-    // print('ai predict here ============>>>>>>>  ${result.toString()}');
+    List<double> result = classifier.classify('This user has experience in 10 years of programing background.');
+    print('ai predict here ============>>>>>>>  ${result.toString()}');
     /// get category name here to overwrite "mlPredict" variable
     /// then show jobs at dashboard layout
     dashboardLoadMore();

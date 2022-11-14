@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsphere/background/constants/color_constant.dart';
+import 'package:jobsphere/background/controllers/layout_controller.dart';
 import 'package:jobsphere/pages/auth/widgets/auth_divider.dart';
 import 'package:jobsphere/pages/auth/widgets/confirm_button.dart';
 import 'package:jobsphere/pages/auth/widgets/email_input.dart';
@@ -28,6 +29,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
+
+  LayoutController c = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               text: 'Register',
                               onPressed: () {
                                 Get.dialog(const LoadingDialog());
+                                c.predictJob();
                                 Future.delayed(const Duration(seconds: 3), () => Get.offAll(const HomePage()));
                               }
                           ),

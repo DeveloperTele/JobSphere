@@ -4,12 +4,13 @@ import 'package:introduction_screen/introduction_screen.dart';
 const dashboardJobTitle = TextStyle(
   color: Colors.indigo,
   fontWeight: FontWeight.bold,
-  fontSize: 20,
+  fontSize: 15,
 );
 
 const dashboardJobLocation = TextStyle(
   color: Colors.black,
-  fontSize: 18,
+  fontWeight: FontWeight.bold,
+  fontSize: 13,
 );
 
 const dashboardListTitle = TextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsphere/background/constants/color_constant.dart';
+import 'package:jobsphere/background/controllers/layout_controller.dart';
 import 'package:jobsphere/pages/intro/intro_page.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -13,10 +14,11 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
 
+  LayoutController controller = Get.find();
+
   @override
   void initState() {
     super.initState();
-
     startTimer();
   }
 

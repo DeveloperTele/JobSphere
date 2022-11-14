@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jobsphere/background/constants/color_constant.dart';
+import 'package:jobsphere/background/controllers/layout_controller.dart';
 import 'package:jobsphere/pages/auth/register_page.dart';
 import 'package:jobsphere/pages/auth/widgets/auth_divider.dart';
 import 'package:jobsphere/pages/auth/widgets/change_button.dart';
@@ -25,6 +26,8 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  LayoutController c = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                             text: 'Login',
                             onPressed: () {
                               Get.dialog(const LoadingDialog());
+                              c.predictJob();
                               Future.delayed(const Duration(seconds: 3), () => Get.offAll(const HomePage()));
                             }
                           ),

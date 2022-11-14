@@ -23,7 +23,6 @@ class Classifier {
 
   void _loadModel() async {
     _interpreter = await Interpreter.fromAsset(_modelFile);
-    print('Interpreter loaded successfully');
   }
 
   void _loadDictionary() async {

@@ -30,7 +30,7 @@ class JobCell extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: Container(
-          height: 150,
+          height: 135,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15)
@@ -64,7 +64,8 @@ class JobCell extends StatelessWidget {
                       innerRadius: 10,
                       outerRadius: 13.0,
                       style: TextStyle(
-                          color: job.levels![0].color!
+                        color: job.levels![0].color!,
+                        fontSize: 13,
                       ),
                     ),
                     const SizedBox(width: 15),
@@ -73,7 +74,8 @@ class JobCell extends StatelessWidget {
                       innerRadius: 10,
                       outerRadius: 13.0,
                       style: TextStyle(
-                        color: Colors.black
+                        color: Colors.black,
+                        fontSize: 13,
                       ),
                     ),
                   ],
@@ -92,7 +94,8 @@ class JobCell extends StatelessWidget {
                     innerRadius: 10,
                     outerRadius: 13.0,
                     style: TextStyle(
-                        color: Colors.red
+                      color: Colors.red,
+                      fontSize: 13,
                     ),
                   ),
                   SizedBox(width: 10,)
